@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom"
 
 import {Menu} from "antd"
 import { Routing } from './Routing';
-import { UserOutlined, UsergroupAddOutlined } from '@ant-design/icons';
+import { TeamOutlined, UserAddOutlined } from '@ant-design/icons';
 
 function App() {
   const navigate=useNavigate()
@@ -17,8 +17,8 @@ function App() {
 
       }}
       items={[
-        {label :"Create Employee" ,key:"/create", icon :<UsergroupAddOutlined/>},
-        {label :"View Employee" ,key:"/list", icon :<UserOutlined />},
+        {label :"Create Employee" ,key:"/create", icon :<UserAddOutlined />},
+        {label :"View Employee" ,key:"/list", icon :<TeamOutlined />},
 
       ]}>
 

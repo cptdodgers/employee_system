@@ -6,7 +6,7 @@ import img from "./images.png";
 
 const { Title } = Typography;
 
-export const CreateEmployee = () => {
+export const EditEmployee = () => {
     const { Option } = Select;
   const [form] = Form.useForm();
 
@@ -41,7 +41,7 @@ const props = {
   
   return (
     <div className="createmp" style={{margin:"20px"}}>
-      <Title style={{margin : "10px", paddingBottom:"20px"}} level={3}>Create Employee</Title>
+      <Title style={{margin : "10px", paddingBottom:"20px"}} level={3}>Edit Employee</Title>
 
       <Form labelCol={{span:14}} form={form} layout="vertical" style={{margin : "10px", width:"100%"}}>
         <Row gutter={[15]}>
@@ -236,7 +236,7 @@ const props = {
                 />
                 </Upload>
                 </div>
-              {/* <div className="div">
+              {/* <div className="div" testing for the image croping effect in pro pic>
                 <img
                 style={{
                   width:"150px",
@@ -297,8 +297,8 @@ const props = {
         </Form.Item>
         
         <Form.Item wrapperCol={{ offset: 8, span: 16 }} style={{textAlign:"right"}}>
-        <Button style={{margin:"10px", borderRadius: "4px", padding:"0px 20px", width:"100px"}} type="primary" htmlType="submit">
-          Submit
+        <Button style={{margin:"10px", borderRadius: "4px", padding:"0px 20px", width:"100px"}} type="primary" htmlType="submit" >
+          Update
         </Button>
         <Button style={{borderRadius: "4px", padding:"0px 20px", width:"100px", backgroundColor:"#FF850D", color:"#ffffff"}} type="" htmlType="reset">
           Reset

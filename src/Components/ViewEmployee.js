@@ -1,5 +1,11 @@
-import React from 'react'
-import { Button, Checkbox, Table, Typography } from 'antd';
+
+import { Button, Checkbox, Table, Typography,message, Popconfirm } from 'antd';
+import "./styles.css";
+import "antd/dist/antd.css";
+import { EditEmployee } from './EditEmployee';
+import { Modal, Space } from 'antd';
+import React,{ useState } from 'react';
+import {useNavigate} from "react-router-dom"
 
 
 const { Title } = Typography;
@@ -10,6 +16,21 @@ export const ViewEmployee = () => {
         console.log(`checked = ${e.target.checked}`);
       };
 
+      const navigate=useNavigate()
+  
+      const routeChange = () =>{ 
+        let path = `/edit`; 
+        navigate("/edit")
+      }
+
+
+
+    const onDeactive = ()=>{
+      Modal.confirm({
+        title : "Are you sure you want to deactive this employee ?"
+      })
+    }
+    
 
     const dataSource = [
         {
@@ -18,8 +39,6 @@ export const ViewEmployee = () => {
           sname: 'Doe',
           designation : 'Engineer',
           active : <Checkbox onChange={onChange}></Checkbox>,
-          edit : <Button style={{color:"#64BFB6", borderBlockColor:"#64BFB6", borderRadius:"5px", padding:"0px 20px"}}>Edit</Button>,
-          deactivate : <Button danger style={{borderRadius:"5px"}}>Deactivate</Button>
         },
         {
           key: '2',
@@ -27,8 +46,6 @@ export const ViewEmployee = () => {
           sname: 'Silva',
           designation : 'Manager',
           active : <Checkbox onChange={onChange}></Checkbox>,
-          edit : <Button style={{color:"#64BFB6", borderBlockColor:"#64BFB6", borderRadius:"5px", padding:"0px 20px"}}>Edit</Button>,
-          deactivate : <Button danger style={{borderRadius:"5px"}}>Deactivate</Button>
         },
         {
             key: '3',
@@ -36,8 +53,6 @@ export const ViewEmployee = () => {
             sname: 'Doe',
             designation : 'Doctor',
             active : <Checkbox onChange={onChange}></Checkbox>,
-            edit : <Button style={{color:"#64BFB6", borderBlockColor:"#64BFB6", borderRadius:"5px", padding:"0px 20px"}}>Edit</Button>,
-            deactivate : <Button danger style={{borderRadius:"5px"}}>Deactivate</Button>
           },
           {
             key: '4',
@@ -45,8 +60,34 @@ export const ViewEmployee = () => {
             sname: 'Silva',
             designation : 'Engineer',
             active : <Checkbox onChange={onChange}></Checkbox>,
-            edit : <Button style={{color:"#64BFB6", borderBlockColor:"#64BFB6", borderRadius:"5px", padding:"0px 20px"}}>Edit</Button>,
-            deactivate : <Button danger style={{borderRadius:"5px"}}>Deactivate</Button>
+          },
+          {
+            key: '5',
+            name: 'Peter',
+            sname: 'Doe',
+            designation : 'Doctor',
+            active : <Checkbox onChange={onChange}></Checkbox>,
+          },
+          {
+            key: '6',
+            name: 'Supun',
+            sname: 'Silva',
+            designation : 'Engineer',
+            active : <Checkbox onChange={onChange}></Checkbox>,
+          },
+          {
+            key: '7',
+            name: 'Peter',
+            sname: 'Doe',
+            designation : 'Doctor',
+            active : <Checkbox onChange={onChange}></Checkbox>,
+          },
+          {
+            key: '8',
+            name: 'Supun',
+            sname: 'Silva',
+            designation : 'Engineer',
+            active : <Checkbox onChange={onChange}></Checkbox>,
           },
       ];
       
@@ -55,6 +96,7 @@ export const ViewEmployee = () => {
           title: 'First Name',
           dataIndex: 'name',
           key: 'name',
+  
         },
         {
           title: 'Last Name',
@@ -75,19 +117,40 @@ export const ViewEmployee = () => {
             title: '',
             dataIndex: 'edit',
             key: 'edit',
+            width: 80,
+
+            render : (record)=>{
+              return(
+              
+                <Button style={{color:"#64BFB6", borderBlockColor:"#64BFB6", borderRadius:"5px"}} onClick={routeChange}>Edit</Button>
+
+            
+              )
+            }
           },
           {
             title: '',
             dataIndex: 'deactivate',
             key: 'deactivate',
+            render : (record)=>{
+              return(
+              
+                <Button danger style={{borderRadius:"5px"}}
+                onClick={onDeactive}
+                >Deactivate</Button>
+
+            
+              )
+            }
           },
+
       ];
       
   return (
     <div className='viewemp' style={{margin:"20px"}}>
          <Title style={{margin:"10px"}} level={3}>Employee List</Title>
-         <Table dataSource={dataSource} columns={columns} pagination={false} />;
-
+         <Table dataSource={dataSource} columns={columns} pagination={false} rowClassName={() => ".ant-table-thead > tr > th"} />;
+        
 
     </div>
   )
